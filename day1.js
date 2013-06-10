@@ -5,10 +5,9 @@ function calculate(text){
     var pattern = /\d+|\+|\-|\*|\/|\(|\) /g; //indicates a "regular expression" pattern
     var tokens = text.match(pattern); //returns array
     //tokens = JSON.stringify(tokens); //JSON = type of interchangable data structure
-    console.log(tokens.shift());
     try{
         var value = evaluate(tokens);
-        if (tokens.length == 0)
+        if (tokens.length != 0)
             throw "ill-formed expression";
         return String(value);
     }catch(err){
@@ -45,7 +44,7 @@ function evaluate(tokenArray){
             throw "unrecognized operator";
         if(tokenArray.length == 0)
             throw "missing operand";
-        var temp = tokenArray.shift(); //double check
+        var temp = read_operand(tokenArray);
         if(operator == "+"){
             value = value + temp;
         }else if (operator == "-"){
