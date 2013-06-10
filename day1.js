@@ -2,7 +2,7 @@
     Calculate: evaluate the value of an arithmetic expression
 */
 function calculate(text){
-    var pattern = /\d+|\+|\-|\*|\/|\(|\) /g; //indicates a "regular expression" pattern
+    var pattern = /\d+|\+|\-|\*|\/|\(|\)/g; //indicates a "regular expression" pattern
     var tokens = text.match(pattern); //returns array
     //tokens = JSON.stringify(tokens); //JSON = type of interchangable data structure
     try{
@@ -27,19 +27,31 @@ function setup_calc(div){
 }
 
 function read_operand(tokenArray){
-    var token = tokenArray.shift();
-    var num = parseInt(token);
+    var token = tokenArray.shift();    
+    //dealing with parentheses
+    if(token == "("){
+        console.log("Found paren");
+        console.log(tokenArray);
+        return evaluate(tokenArray);
+    }else{
+        var num = parseInt(token);
+    }
     if(isNaN(num))
         throw "number expected";
     return num;
 }
 
 function evaluate(tokenArray){
+    console.log("Evaluate");
+    console.log(tokenArray);
     if(tokenArray.length == 0)
         throw "missing operand";
     var value = read_operand(tokenArray);
     while(tokenArray.length !== 0){
         var operator = tokenArray.shift();
+        console.log("operator: ", operator);
+        if (operator == ")")
+            return value;
         if(['+', '-', '*', '/'].indexOf(operator) < 0)
             throw "unrecognized operator";
         if(tokenArray.length == 0)
@@ -51,7 +63,7 @@ function evaluate(tokenArray){
             value = value - temp;
         }else if (operator == "*"){
             value = value*temp;
-        }else{
+        }else if (operator == "/"){
             value = value/temp;
         }
     }
