@@ -1,10 +1,11 @@
  /*
     Calculate: evaluate the value of an arithmetic expression
 */
+
+//Parses a string of text and calls evaluate()
 function calculate(text){
-    var pattern = /\d+|\+|\-|\*|\/|\(|\)/g; //indicates a "regular expression" pattern
+    var pattern = /\d+|\+|\-|\*|\/|\(|\)/g; 
     var tokens = text.match(pattern); //returns array
-    //tokens = JSON.stringify(tokens); //JSON = type of interchangable data structure
     try{
         var value = evaluate(tokens);
         if (tokens.length != 0)
@@ -15,6 +16,7 @@ function calculate(text){
     }
 }
 
+//Sets up the calculator; visual representation
 function setup_calc(div){
     var input = $('<input></input>', {type: "Text", size: 50});
     var output = $('<div></div>');
@@ -22,16 +24,14 @@ function setup_calc(div){
     button.bind("click", function(){
         output.text(String(calculate(input.val())));
     });
-    
     $(div).append(input, button, output);
 }
 
-function read_operand(tokenArray){
+//Reads the next value in the array
+//Expects a number, can deal with parentheses
+function read_operand(tokenArray){ 
     var token = tokenArray.shift();    
-    //dealing with parentheses
     if(token == "("){
-        console.log("Found paren");
-        console.log(tokenArray);
         return evaluate(tokenArray);
     }else{
         var num = parseInt(token);
@@ -41,15 +41,13 @@ function read_operand(tokenArray){
     return num;
 }
 
+//Evaluates a parsed string (tokenArray), returns numeric value after arithmetic applied
 function evaluate(tokenArray){
-    console.log("Evaluate");
-    console.log(tokenArray);
     if(tokenArray.length == 0)
         throw "missing operand";
     var value = read_operand(tokenArray);
     while(tokenArray.length !== 0){
         var operator = tokenArray.shift();
-        console.log("operator: ", operator);
         if (operator == ")")
             return value;
         if(['+', '-', '*', '/'].indexOf(operator) < 0)
@@ -69,6 +67,8 @@ function evaluate(tokenArray){
     }
     return value;
 }
+
+//applies code each time "calculator" is used in the html file
 $(document).ready(function(){
    $('.calculator').each(function(){
        setup_calc(this);
