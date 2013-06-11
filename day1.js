@@ -4,8 +4,12 @@
 
 //Parses a string of text and calls evaluate()
 function calculate(text){
-    var pattern = /\d+|\+|\-|\*|\/|\(|\)/g; 
+    //var pattern = /\d+|\+|\-|\*|\/|\(|\)/g; 
+    //var pattern = /[-+]?([0-9]*\.[0-9]+|[0-9]+)/g;
+    
+    var pattern = /[-+]?([0-9]*\.[0-9]+|[0-9]+)|\+|\-|\*|\/|\(|\)/g; 
     var tokens = text.match(pattern); //returns array
+    console.log(tokens);
     try{
         var value = evaluate(tokens);
         if (tokens.length != 0)
@@ -35,10 +39,10 @@ function read_operand(tokenArray){
         return evaluate(tokenArray);
     }else if(token == "-"){
      token = tokenArray.shift();
-     var num = parseInt(token);
+     var num = parseFloat(token);
      num *= -1;
     }else{
-        var num = parseInt(token);
+        var num = parseFloat(token);
     }
     if(isNaN(num))
         throw "number expected";
