@@ -70,6 +70,8 @@ input{
     position:absolute;
     left: 50px;
     top: 75px;
+    font-family:monospace;
+    font-size:14px;
 }
 
 .Calculator{
