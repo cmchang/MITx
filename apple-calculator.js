@@ -145,6 +145,9 @@ function setup_calc(div){
     
     var output = $('<span class="output"></span>');
     
+    
+    ///////////////// Button Functions////////////////////////
+    
     input.keyup(function(event){
         if (event.keyCode==13){ //clicks "=" button if someone presses enter
             buttonEquals.click();
@@ -155,6 +158,59 @@ function setup_calc(div){
         output.text(String(calculate(input.val())));
     });
     
+    buttonC.bind("click",function(){
+        input.val("");
+    });
+    
+    buttonZero.bind("click",function(){
+        var oldInput=input.val();
+        input.val(oldInput+"0");
+    });
+    
+    button1.bind("click",function(){
+        var oldInput=input.val();
+        input.val(oldInput+"1");
+    });
+    
+    button2.bind("click",function(){
+        var oldInput=input.val();
+        input.val(oldInput+"2");
+    });
+    
+    button3.bind("click",function(){
+        var oldInput=input.val();
+        input.val(oldInput+"3");
+    });
+    
+    button4.bind("click",function(){
+        var oldInput=input.val();
+        input.val(oldInput+"4");
+    });
+    
+    button5.bind("click",function(){
+        var oldInput=input.val();
+        input.val(oldInput+"5");
+    });
+    
+    button6.bind("click",function(){
+        var oldInput=input.val();
+        input.val(oldInput+"6");
+    });
+
+    button7.bind("click",function(){
+        var oldInput=input.val();
+        input.val(oldInput+"7");
+    });
+    
+    button8.bind("click",function(){
+        var oldInput=input.val();
+        input.val(oldInput+"8");
+    });
+    
+    button9.bind("click",function(){
+        var oldInput=input.val();
+        input.val(oldInput+"9");
+    });
     $(div).append(input,output,divRow1,divRow2,divRow3,divRow4,divRow5,divRow6);
 }
 
