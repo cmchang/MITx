@@ -138,7 +138,10 @@ function setup_calc(div){
     var divRow6=$('<div></div>',{class:"row"});
     $(divRow6).append(buttonZero,buttonDec);
 
-    var input = $('<div class="input"></div>');
+    //var input = $('<div class="input"></div>');
+    //var inputText= $('<input></input>',{type:"Text]"});
+    //$(input).append(inputText);
+    var input = $('<input></input>',{type:"Text"});
     
     var output = $('<span class="output"></span>');
     
