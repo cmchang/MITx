@@ -33,6 +33,10 @@ function read_operand(tokenArray){
     var token = tokenArray.shift();    
     if(token == "("){
         return evaluate(tokenArray);
+    }else if(token == "-"){
+     token = tokenArray.shift();
+     var num = parseInt(token);
+     num *= -1;
     }else{
         var num = parseInt(token);
     }
