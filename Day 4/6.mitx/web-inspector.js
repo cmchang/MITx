@@ -50,13 +50,27 @@ var Inspector = function($) {
   }
   
   var searchedNumb = function(){
-      //var selectorBox = root.find(".selector");
-      //var selectorStr = selectorBox.val();
-      //var allSelection = $(selectorStr);
-    
-      $('#index').html("TESTTTTT");
+      var selectorBox = root.find(".selector");
+      var selectorStr = selectorBox.val();
+      var allSelection = $(selectorStr);
       
+      var numbBox = root.find(".nth");
+      var nth= parseInt(numbBox.val());
       
+      if(isNaN(nth))
+          nth = 1;
+      
+      var numOfSelections = allSelection.length;
+      var currentSelection=$(allSelection[nth-1]);// or eq(nth-1)
+      currentNode = currentSelection;
+      console.log(currentNode);
+      var html = getHtmlWithWrapperOf(currentNode);
+      var textEditor = root.find(".text-editor");
+      textEditor.val(html);
+
+      $('#index').html(nth+"/"+numOfSelections);
+
+
   }
   
   var liveHTMLedit = function(){
