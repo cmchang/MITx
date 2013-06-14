@@ -1,0 +1,44 @@
+.graphcalc {
+        background-image: -webkit-linear-gradient(#BBBBBB,#BCBCBC,#B1B1B1);
+        width: 420px;
+        float:right;
+        height: 520px;
+    }
+canvas {
+    border: black solid 1px;
+    border-radius: 10px;
+    box-shadow: 
+        0 4px 7px 0 #AFB495 inset,
+        0 -2px 2px 0 #818181,
+        3px 0 2px 0 #818181,
+        -1px 4px 4px 0 #EEEEEE;
+    background-color: rgb(238, 251, 205);
+	margin-left: 10px; 
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+    
+text{
+    margin-left: 10px;
+}
+
+#plotB{
+    font-size: 10pt;
+	margin-left: 10px;
+    width: 50px;
+    height: 40px;
+}
+
+#input1{
+    border-radius: 10px;
+    background-color: white;
+    width: 370px;
+}
+#input2{
+    border-radius: 10px;
+    background-color: white;
+    width: 150px;
+
+
+}
+

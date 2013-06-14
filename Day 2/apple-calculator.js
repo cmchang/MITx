@@ -85,12 +85,10 @@ function evaluate(tokens){
         var operatorPattern=/\+|\-|\*|\//g;
         if (operator.match(operatorPattern) === null ) throw "unrecognized operator";
         if (tokens.length===0) throw "missing operand";
-        //var val2 = read_operand(tokens);
         var val2=read_term(tokens);
         if (operator == "+") ans= parseFloat(val1) + parseFloat(val2);
         else if (operator == "-") ans= val1 - val2;
-        //else if (operator == "*") ans= val1 * val2;
-        //else ans= val1 / val2;
+
         val1=ans;
         if (tokens[0]==")") break;
     }
