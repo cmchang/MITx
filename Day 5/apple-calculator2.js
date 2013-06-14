@@ -141,7 +141,7 @@ $(document).ready(function(){
                 break;
             case "=":
                 break;
-            case "Plot": //////FIX THIS LINE
+            case "Plot": 
                 break;
             default:
                 var expression = $('#expression');

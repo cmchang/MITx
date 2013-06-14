@@ -55,8 +55,8 @@ function graphFunct(graph,input,xmin,xmax){
     
     try{
         var equat = calculator.parse(input.val());
-        var ymax = -1000;
-        var ymin = 1000;
+        var ymax = Math.NEGATIVE_INFINITY;
+        var ymin = Math.POSITIVE_INFINITY;
         for(var x=0; x<=graph.width(); x++) {
             var y = calculator.evaluate(equat,{'x':fromX(x,xstart,xend,graph)});
             yvalues.push(y);
