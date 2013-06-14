@@ -4,6 +4,7 @@ $(document).ready(function(){
     });
 });
 
+//create the visual calculator
 function setup_Gcalc(div) {
     var graph = $('<canvas width="400" height="300">test</canvas>');
     var input = $('<input></input>',{type: 'text', id: 'input1'});
@@ -41,6 +42,14 @@ function graphFunct(graph,input,xmin,xmax){
 
     var xstart = parseFloat(xmin.val());
     var xend = parseFloat(xmax.val());
+    
+    //if no x min/max given, set default values
+    if(isNaN(xstart) || isNaN(xend)){
+        xstart = 0;
+        xend = 10;
+        xmin.val("0");
+        xmax.val("10");
+    }
     
     var yvalues = [];
     

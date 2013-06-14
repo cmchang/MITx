@@ -141,6 +141,8 @@ $(document).ready(function(){
                 break;
             case "=":
                 break;
+            case "Plot": //////FIX THIS LINE
+                break;
             default:
                 var expression = $('#expression');
                 var input = expression.val();
