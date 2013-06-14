@@ -5,8 +5,9 @@
         height: 520px;
     }
 canvas {
-    border: black solid 1px;
+    border-width:1px;
     border-radius: 10px;
+    border-color:#AFB495;
     box-shadow: 
         0 4px 7px 0 #AFB495 inset,
         0 -2px 2px 0 #818181,
