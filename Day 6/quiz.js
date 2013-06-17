@@ -1,8 +1,15 @@
 var quiz = (function(){
+    //set these booleans to choose type of storage
+    var localStorageBool = false;
+    var parseStorageBool = false;
     
     function setup(){
         displayQuestion();
-        useLocalStorage();
+        
+        if(localStorageBool)
+            useLocalStorage();
+        if(parseStorageBool)
+            useParseStorage();
     }
     
     var exports = {}
@@ -16,33 +23,33 @@ var quiz = (function(){
                       "solutionIndex": 0},
                        {"questionText": "Sam thinks y = -2x is going to ____ as x goes from 1 to 10", 
                       "options": ["increase", "decrease", "increase then decrease", "decrease then increase"], 
-                      "solutionIndex": 1}
+                      "solutionIndex": 1},
+                       {"questionText": "Sam thinks y = x^2 is going to ____ as x goes from -5 to 5", 
+                      "options": ["increase", "decrease", "increase then decrease", "decrease then increase"], 
+                      "solutionIndex": 3}
                       ]; 
-    //contains questionText, options, solutionIndex
+                    //contains questionText, options, solutionIndex
     
     var currentQdict = questionObj[getCurrentQIndex()];
-    var answers = []; // answers from the student
     
-
-    
-    function useLocalStorage(){
-        if(localStorage['score'] == null)
-            localStorage['score'] = 0;
-        
-        if(localStorage['currentQuestionIndex'] == null)
-            localStorage['currentQuestionIndex'] = 0;
-        }
-    
-    function testParse(){
-    //testing Parse
+    function useParseStorage(){
         Parse.initialize("K7dWs83taOaSh9tqHqP11JxMNIo7APTub6hqj6xk", "nHmtT3eIrWiLqICJJmmJ15V7T2AI6s4Twvp6Ldqs");
-        var TestObject = Parse.Object.extend("TestObject");
-        var testObject = new TestObject();
-        testObject.save({foo: "bar"}, {
-          success: function(object) {
-            alert("yay! it worked");
-          }
-        });
+        var ParseMem = Parse.Object.extend("QuizMemory");
+        var parseMem = new ParseMem();
+        parseMem.set("Score", getCurrentScore());
+        parseMem.set("CurrentQIndex", getCurrentQIndex());
+    }
+    
+    function useLocalStorage(){ //called in the setup()
+        if(localStorage['score'] == null){
+            console.log(localStorage);
+            localStorage['score'] = 0;
+            console.log(localStorage);
+        }
+        
+        if(localStorage['currentQuestionIndex'] == null )
+            localStorage['currentQuestionIndex'] = 0;
+        
     }
     
         //displays the current quiz question to the student
@@ -98,24 +105,14 @@ var quiz = (function(){
     function checkAnswer(ans){
         return currentQdict.options[currentQdict.solutionIndex] == ans;
     }
-      
-    function incrementScore(){
-        if(localStorage['score'] != null)
-            localStorage['score']++;
-        score++;   
-    }
     
-    function decreaseScore(){
-        if(localStorage['score'] != null)
-            localStorage['score']--;
-        score--;   
-    }
-    
-    function getCurrentScore(){
-        var currentScore = score;
-        if(localStorage['score'] != null)
-            currentScore = localStorage['score'];
-        return currentScore;
+    function addLSButton(){ //add local server reset button
+        var resetLocalStorageBtn = $('<button id = "LSBtn">Reset Local Storage</button>');
+        $(".quiz").append(resetLocalStorageBtn);
+        $('#LSBtn').on('click', function(){
+                                     localStorage['score'] = 0;
+                                     localStorage['currentQuestionIndex'] = 0;
+                                     });
     }
     
     function displayNextButton(){
@@ -133,12 +130,32 @@ var quiz = (function(){
         }else{
             var endText = $("<text>You are done with the quiz! Your final score is = " + getCurrentScore() +"!</text>");
             $('.quiz').append(endText);
-            addLSButton()
+            if(localStorageBool)
+                addLSButton()
         }
     }
     
+    function incrementScore(){
+        if(localStorageBool)
+            localStorage['score']++;
+        score++;   
+    }
+    
+    function decreaseScore(){
+        if(localStorageBool)
+            localStorage['score']--;
+        score--;   
+    }
+    
+    function getCurrentScore(){
+        var currentScore = score;
+        if(localStorageBool)
+            currentScore = localStorage['score'];
+        return currentScore;
+    }
+    
     function incrementQIndex(){
-        if(localStorage['currentQuestionIndex'] != null)
+        if(localStorageBool)
             localStorage['currentQuestionIndex']++;
         currentQuestionIndex++;
     }
@@ -150,15 +167,16 @@ var quiz = (function(){
         return currentIndex;
     }
     
-    function addLSButton(){
-        var resetLocalStorageBtn = $('<button id = "LSBtn">Reset Local Storage</button>');
-        $(".quiz").append(resetLocalStorageBtn);
-        $('#LSBtn').on('click', function(){
-                                     localStorage['score'] = 0;
-                                     localStorage['currentQuestionIndex'] = 0;
-                                     });
+    function testParse(){
+        Parse.initialize("K7dWs83taOaSh9tqHqP11JxMNIo7APTub6hqj6xk", "nHmtT3eIrWiLqICJJmmJ15V7T2AI6s4Twvp6Ldqs");
+        var TestObject = Parse.Object.extend("TestObject");
+        var testObject = new TestObject();
+        testObject.save({foo: "bar"}, {
+          success: function(object) {
+            alert("yay! it worked");
+          }
+        });
     }
-    
     exports.setup = setup;
     return exports;
 })();
