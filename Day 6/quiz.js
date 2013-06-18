@@ -2,6 +2,7 @@ var quiz = (function(){
     //set these booleans to choose type of storage
     var localStorageBool = false;
     var parseStorageBool = false;
+    var useAJAX = true;
     
     function setup(){
         displayQuestion();
@@ -38,14 +39,13 @@ var quiz = (function(){
         var parseMem = new ParseMem();
         parseMem.set("Score", getCurrentScore());
         parseMem.set("CurrentQIndex", getCurrentQIndex());
+        parseMem.save();
+        
     }
     
     function useLocalStorage(){ //called in the setup()
-        if(localStorage['score'] == null){
-            console.log(localStorage);
+        if(localStorage['score'] == null)
             localStorage['score'] = 0;
-            console.log(localStorage);
-        }
         
         if(localStorage['currentQuestionIndex'] == null )
             localStorage['currentQuestionIndex'] = 0;
@@ -89,9 +89,16 @@ var quiz = (function(){
     function getAnswer(){
         var answer = $('input[name="choice' + getCurrentQIndex()+ '"]:checked').val();
         //console.log(answer);
-        var correct = checkAnswer(answer);
         
-        if (checkAnswer(answer)){
+        var correct = false;
+        
+        if(useAJAX){
+            correct = checkAnswerAJAX(answer);
+        }else{
+            correct = checkAnswer(answer); 
+        }
+                
+        if (correct){
             incrementScore();
             $(".answerDiv" +getCurrentQIndex()).text("Correct, " + "Score: " + getCurrentScore() );  
             displayNextButton();
@@ -104,6 +111,25 @@ var quiz = (function(){
     
     function checkAnswer(ans){
         return currentQdict.options[currentQdict.solutionIndex] == ans;
+    }
+    
+    function checkAnswerAJAX(ans){
+        
+        var req = $.ajax({ //ajax communicates with local server
+        async: false, //carryout commands in order
+        url: "http://localhost:8080/",
+            data: {index:getCurrentQIndex(),
+                   answer: ans
+                  }
+        })
+        req.done(function(msg){
+                console.log("response: " + msg);
+                if(msg == "true")
+                    return true;
+                if(msg == "false")
+                    return false;
+            })
+        console.log("Running checkAnswerAJAX function.");
     }
     
     function addLSButton(){ //add local server reset button
@@ -136,15 +162,19 @@ var quiz = (function(){
     }
     
     function incrementScore(){
-        if(localStorageBool)
+        if(localStorageBool){
             localStorage['score']++;
-        score++;   
+        }else{
+            score++;
+        }
     }
     
     function decreaseScore(){
-        if(localStorageBool)
+        if(localStorageBool){
             localStorage['score']--;
+        }else{
         score--;   
+        }
     }
     
     function getCurrentScore(){
@@ -181,12 +211,10 @@ var quiz = (function(){
     return exports;
 })();
 
+///////////////////////////////////////////////////////////////////////////////////
 
-
-$(document).ready(function(){
-   quiz.setup(); 
-    
-    //when the page loads, contact server, when request is done show message
+function testAjax(){
+//when the page loads, contact server, when request is done show message
     var req = $.ajax({ //ajax communicates with local server
         async: false, //carryout commands in order
         url: "http://localhost:8080/",
@@ -197,4 +225,12 @@ $(document).ready(function(){
             console.log(msg);
         })
     console.log("what");
+}
+
+
+$(document).ready(function(){
+   quiz.setup(); 
+    
+    //testAjax();
+    
 });
