@@ -1,11 +1,42 @@
 var myData = [0, 4, 8, 8, 15, 16, 23, 42];
-var chart_height = 140;
-var x_scale = d3.scale.linear().domain([0, d3.max(myData)]).range(["0%", "100%"]);
-var y_scale = d3.scale.ordinal().domain(d3.keys(myData)).rangeBands([0, chart_height]);
-d3Chart2();
-
-function d3Chart2(){
+d3Chart3();
+function d3Chart3(){ //vertical bar graph
+    var chart_width = 300;
+    var chart_height = 300;
+    var x_scale = d3.scale.ordinal().domain(d3.keys(myData)).rangeBands([0, chart_width]);
+    var y_scale = d3.scale.linear().domain([0, d3.max(myData)]).range([0, chart_height]);
     
+    var chart = d3.select(".chart-container")
+                .append("svg")
+                .attr("class", "chart")
+                .attr("height", chart_height)
+                .attr("width", chart_width);
+    
+    //create the bar graph
+    chart.selectAll("rect").data(myData)
+        .enter().append("rect")
+        .attr("x", function (d, i){return x_scale(i); })
+        .attr("y", function(d){return chart_height - y_scale(d);}) //.attr("y", function(d, i){return 20*i;})
+        .attr("width", x_scale.rangeBand())
+        .attr("height", y_scale);
+    
+    //create text labels
+    chart.selectAll("text").data(myData)
+        .enter().append("text")
+        .attr("x", function (d, i){return x_scale(i) + x_scale.rangeBand()/2})
+        .attr("y", function(d, i){return chart_height - y_scale(d) + 3;}) 
+        .attr("dy", "0.7em")
+        .attr("text-anchor", "middle")
+        .text(function(d){return d;});
+
+}
+
+///////////////////// Old Code /////////////////////////
+
+function d3Chart2(){ //Horizontal bar graph, using SVG
+    var chart_height = 140;
+    var x_scale = d3.scale.linear().domain([0, d3.max(myData)]).range(["0%", "100%"]);
+    var y_scale = d3.scale.ordinal().domain(d3.keys(myData)).rangeBands([0, chart_height]);
     var chart = d3.select(".chart-container")
                 .append("svg")
                 .attr("class", "chart");
@@ -29,8 +60,7 @@ function d3Chart2(){
 
 
 
-////////////////////////Old Code////////////////////////
-function jQueryChart(){ //making a chart without d3
+function jQueryChart(){ //making a horizontal bar graph without d3
     var chart = $("<div></div>)").addClass("chart");
     $(".chart-container").append(chart);
     data.forEach(function(d){ //forEach: for loop
@@ -39,7 +69,7 @@ function jQueryChart(){ //making a chart without d3
     });
 }
 
-function d3Chart(){
+function d3Chart(){ //making a simple d3 horizontal bar graph
     var chart = d3.select(".chart-container")
                 .append("div")
                 .attr("class", "chart");
