@@ -1,46 +1,46 @@
 {
- "name": "flare",
+ "name": "Root",
  "children": [
   {
-   "name": "analytics"
+   "name": "Child1"
   },
   {
-   "name": "animate",
+   "name": "Child2",
    "children": [
    ]
   },
   {
-   "name": "data",
+   "name": "Child3",
    "children": [
     {
-     "name": "converters",
+     "name": "Child3s Child1",
      "children": [
      ]
     },
-    {"name": "DataField", "size": 1759},
-    {"name": "DataSchema", "size": 2165},
-    {"name": "DataSet", "size": 586},
-    {"name": "DataSource", "size": 3331},
-    {"name": "DataTable", "size": 772},
-    {"name": "DataUtil", "size": 3322}
+    {"name": "Child3s Child2", "size": 1759},
+    {"name": "Child3s Child3", "size": 2165},
+    {"name": "Child3s Child4", "size": 586},
+    {"name": "Child3s Child5", "size": 3331},
+    {"name": "Child3s Child6", "size": 772},
+    {"name": "Child3s Child7", "size": 3322}
    ]
   },
   {
-   "name": "flex",
+   "name": "Child4",
    "children": [
-    {"name": "FlareVis", "size": 4116}
+    {"name": "Child34s Child", "size": 4116}
    ]
   },
   {
-   "name": "query"
+   "name": "Child5"
   },
   {
-   "name": "util"
+   "name": "Child6"
   },
   {
-   "name": "vis",
+   "name": "Child7",
    "children": [
-    {"name": "Visualization", "size": 16540}
+    {"name": "Child7s Child", "size": 16540}
    ]
   }
  ]
