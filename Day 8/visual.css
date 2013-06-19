@@ -8,9 +8,19 @@
     stroke: white;
 }
 
-.chart text{
+.chart .bar-label{
     fill: white;
     font: 10px sans-serif;
+}
+
+.chart .y-scale-label{
+    fill: black;
+    font: 10px sans-serif;
+}
+
+
+.chart line{
+    stroke: #ccc;   
 }
 
 .chart div {

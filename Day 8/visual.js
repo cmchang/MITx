@@ -1,34 +1,63 @@
-var myData = [0, 4, 8, 8, 15, 16, 23, 42];
+var myData = [4, 8, 8, 15, 16, 23, 42];
 d3Chart3();
 function d3Chart3(){ //vertical bar graph
-    var chart_width = 300;
-    var chart_height = 300;
-    var x_scale = d3.scale.ordinal().domain(d3.keys(myData)).rangeBands([0, chart_width]);
-    var y_scale = d3.scale.linear().domain([0, d3.max(myData)]).range([0, chart_height]);
+    var outer_width = 300;
+    var outer_height = 300;
     
+    var margin = {top: 20, right: 20, bottom: 20, left: 20};
+    
+    var chart_width = outer_width - margin.left - margin.right;
+    var chart_height = outer_height - margin.top - margin.bottom;
+    
+    var x_scale = d3.scale.ordinal().domain(d3.keys(myData)).rangeBands([0, chart_width]);
+    var y_scale = d3.scale.linear().domain([0, d3.max(myData)]).range([chart_height, 0]);
+    
+    //create container with margins taken in account
     var chart = d3.select(".chart-container")
-                .append("svg")
+            .append("svg")
                 .attr("class", "chart")
-                .attr("height", chart_height)
-                .attr("width", chart_width);
+                .attr("height", outer_height)
+                .attr("width", outer_width)
+            .append("g")
+                .attr("transform", "translate(" +margin.left + "," + margin.top + ")");
+    
+    //create axis
+    //note: y_scale.ticks(10) returns an array of 10 "ticks" evenly within the range
+    chart.selectAll("line").data(y_scale.ticks(10))
+        .enter().append("line")
+        .attr('x1', 0)
+        .attr('x2', chart_width)
+        .attr('y1', y_scale)
+        .attr('y2', y_scale);
+    //create axis labels
+    chart.selectAll("y-scale-lable").data(y_scale.ticks(10))
+        .enter().append("text")
+        .attr("class", "y-scale-label")
+        .attr("x", 0)
+        .attr("y", y_scale)
+        .attr("dx", -margin.left/8)
+        .attr("dy", "0.3em")
+        .attr("text-anchor", "end")
+        .text(String); //String instead of "function(d){return d;}" (does a type conversion)
     
     //create the bar graph
     chart.selectAll("rect").data(myData)
         .enter().append("rect")
         .attr("x", function (d, i){return x_scale(i); })
-        .attr("y", function(d){return chart_height - y_scale(d);}) //.attr("y", function(d, i){return 20*i;})
+        .attr("y", y_scale)
         .attr("width", x_scale.rangeBand())
-        .attr("height", y_scale);
+        .attr("height", function(d){return chart_height - y_scale(d);}); ///
     
     //create text labels
-    chart.selectAll("text").data(myData)
+    chart.selectAll(".bar-label").data(myData)
         .enter().append("text")
+        .attr("class", "bar-label")
         .attr("x", function (d, i){return x_scale(i) + x_scale.rangeBand()/2})
-        .attr("y", function(d, i){return chart_height - y_scale(d) + 3;}) 
+        .attr("y", function(d, i){return y_scale(d) + margin.top/4;}) //
         .attr("dy", "0.7em")
         .attr("text-anchor", "middle")
         .text(function(d){return d;});
-
+    
 }
 
 ///////////////////// Old Code /////////////////////////
