@@ -1,5 +1,16 @@
 .chart{
-    border: 1px solid gray;   
+    border: 1px solid gray; 
+
+}
+
+.chart rect{
+    fill: #9DCAE1;
+    stroke: white;
+}
+
+.chart text{
+    fill: white;
+    font: 10px sans-serif;
 }
 
 .chart div {
