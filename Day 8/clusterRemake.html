@@ -25,9 +25,14 @@
 
 <script>
 
-var width = 960,
-    //height = 2200; //when JSON file is flare.json
-    height = 500; //when JSON file is flareRemake.json
+
+//when JSON file is flare.json
+//var width = 960,
+//height = 2200;
+    
+//when JSON file is flareRemake.json
+var width = 500,
+height = 300; 
 
 var cluster = d3.layout.cluster() //creates a new cluster layout with default settings
     .size([height, width - 160]);
@@ -45,7 +50,7 @@ var svg = d3.select("body").append("svg") //creates the whole body that holds th
 
 d3.json("flareRemake.json", function(error, root) {
   var nodes = cluster.nodes(root), //Runs the cluster layout, returning the array of nodes associated with the specified root node. 
-      links = cluster.links(nodes); //Given the specified array of nodes, such as those returned by nodes, returns an array of objects representing the links from parent to child for each node
+      links = cluster.links(nodes); //returns an array of objects representing the links from parent to child for each node
 
   var link = svg.selectAll(".link") //creates the paths
       .data(links)
