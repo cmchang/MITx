@@ -30,24 +30,26 @@ my_http.createServer(function(request,response){
 }).listen(8080);  
 sys.puts("Server Running on 8080");
 
-
-function testParse(urlStr){ //testing the parser, getting  specific values
-    var parseObj = url.parse(urlStr, true ,true);
-    console.log("Parse object: ");
-    console.log(parseObj);
-    console.log("Parse object, query: ");
-    console.log(parseObj.query);
-    console.log("Parse object, query, index: ");
-    console.log(parseObj.query.index);
-}
-
 function checkAnswer(urlStr){
     var parseObj = url.parse(urlStr, true ,true);
     var index = parseObj.query.index;
     var answer = parseObj.query.answer;
     console.log("index: " + index);
     console.log("answer: " + answer);
+    console.log("return: ");
+    console.log(questionObj[index].options[questionObj[index].solutionIndex] == answer);
     
     return questionObj[index].options[questionObj[index].solutionIndex] == answer;
 
 }
+
+
+//function testParse(urlStr){ //testing the parser, getting  specific values
+//    var parseObj = url.parse(urlStr, true ,true);
+//    console.log("Parse object: ");
+//    console.log(parseObj);
+//    console.log("Parse object, query: ");
+//    console.log(parseObj.query);
+//    console.log("Parse object, query, index: ");
+//    console.log(parseObj.query.index);
+//}

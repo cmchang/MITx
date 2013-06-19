@@ -97,6 +97,8 @@ var quiz = (function(){
         }else{
             correct = checkAnswer(answer); 
         }
+        
+        console.log("RESPONSE: " + correct);
                 
         if (correct){
             incrementScore();
@@ -122,14 +124,14 @@ var quiz = (function(){
                    answer: ans
                   }
         })
+        
+        var correct = "";
         req.done(function(msg){
                 console.log("response: " + msg);
-                if(msg == "true")
-                    return true;
-                if(msg == "false")
-                    return false;
+                correct = msg;
             })
         console.log("Running checkAnswerAJAX function.");
+        return correct;   
     }
     
     function addLSButton(){ //add local server reset button

@@ -1,0 +1,47 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "analytics"
+  },
+  {
+   "name": "animate",
+   "children": [
+   ]
+  },
+  {
+   "name": "data",
+   "children": [
+    {
+     "name": "converters",
+     "children": [
+     ]
+    },
+    {"name": "DataField", "size": 1759},
+    {"name": "DataSchema", "size": 2165},
+    {"name": "DataSet", "size": 586},
+    {"name": "DataSource", "size": 3331},
+    {"name": "DataTable", "size": 772},
+    {"name": "DataUtil", "size": 3322}
+   ]
+  },
+  {
+   "name": "flex",
+   "children": [
+    {"name": "FlareVis", "size": 4116}
+   ]
+  },
+  {
+   "name": "query"
+  },
+  {
+   "name": "util"
+  },
+  {
+   "name": "vis",
+   "children": [
+    {"name": "Visualization", "size": 16540}
+   ]
+  }
+ ]
+}
