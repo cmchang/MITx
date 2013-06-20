@@ -1,0 +1,89 @@
+<html>
+<head>
+
+    <title>Sushi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <link href="my-bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="my-bootstrap/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href = "sushiPlate.css" rel = "stylesheet">
+    <script src = "sushiPlate.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <!-- This script tag makes the lists grided and sortable-->
+    
+    
+</head>
+
+<body>
+    <!-- Navbar-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand">Sushi Platter Optimization</a>
+            </div>
+        </div>
+    </div>
+    <!--End of Navbar-->
+    
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+Filler text! Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. 
+        
+        </div>
+        
+    </div>
+    
+    
+    <div class="row-fluid sushiPlate">
+        <div class = "row-fluid">
+            <div class = "span5">
+                <h3>Sushi Menu</h3>
+            </div>
+            <div class = "span5">
+                <h3>Your Current Plate</h3>
+            
+            </div>
+            <div class = "span2"></div>
+        </div>
+        <div class = "row-fluid">
+            <div class="span5">
+                <ul id="sortable1" class="connectedSortable itemContainer1">
+                    <li><text>$10, 15%</text><img src="images/sushi1.jpg" data-price = "10" data-hunger = "15"></li>
+                    <li><text>$8, 8%</text><img src="images/sushi2.png" data-price = "8" data-hunger = "8"></li>
+                    <li><text>$6, 4%</text><img src="images/sushi3.png" data-price = "6" data-hunger = "4"></li>
+                    <li><text>$8, 8%</text><img src="images/sushi4.png" data-price = "8" data-hunger = "8"></li>
+                    <li><text>$8, 4%</text><img src="images/sushi5.png" data-price = "8" data-hunger = "4"></li>
+                    <li><text>$10, 15%</text><img src="images/sushi6.jpg" data-price = "10" data-hunger = "10"></li>
+                    <li><text>$10, 15%</text><img src="images/sushi1.jpg" data-price = "10" data-hunger = "15"></li>
+                    <li><text>$8, 8%</text><img src="images/sushi2.png" data-price = "8" data-hunger = "8"></li>
+                    <li><text>$6, 4%</text><img src="images/sushi3.png" data-price = "6" data-hunger = "4"></li>
+
+                </ul>
+            </div>
+            <div class="span5">
+                <ul id="sortable1" class="connectedSortable itemContainer2">
+                </ul>
+                </div>
+            <div class ="span2">
+                <div class = "row-fluid statusBar">
+                    <div ><h4><u>Current Status:</u></h4></div>
+                    <div ><h5>Price:  <span class = "price">$0</span></h5></div>
+                    <div ><h5>Fullness:  <span class = "hunger">0%</span></h5></div>
+                    <div class="progress progress-striped">
+                        <div class="bar" style="width: 0%;"></div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div> <!-- End of Knapsack Div -->
+</div>
+    
+</body>
+</html>
+    

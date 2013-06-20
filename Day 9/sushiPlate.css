@@ -1,0 +1,37 @@
+body { 
+    padding-top: 60px; /* prevents body from overlapping with navbar*/
+    padding-bottom: 40px;
+    padding-left: 20px;    
+}
+
+.span12{
+    margin-bottom: 15px;   
+}
+
+.itemContainer1, .itemContainer2{
+    border: solid gray 1px;
+    border-radius: 15px;
+    height: 360px;
+    width: 450px;
+}
+#sortable1{ 
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0 0 2.5em; 
+    float: left; 
+    margin-right: 10px; }
+
+/*elements in list*/
+#sortable1 li{  
+    margin: 0 5px 5px 5px; 
+    padding: 5px;
+    padding-bottom: 25px;
+    width: 120px;
+    height: 90px;
+    float: left; 
+}
+
+
+.statusBar{
+    text-align:left;
+}
