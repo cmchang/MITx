@@ -29,5 +29,27 @@ function updateStatus(){
     
     $(".bar").attr("style", "width: "+totalHunger+"%")
     
+    priceStatusLabel(totalPrice);
     
+    
+}
+
+var goalPrice = 50;
+function priceStatusLabel(price){
+    if(price < goalPrice){
+        $(".priceStatusLabel").attr("class", "label label-success priceStatusLabel")
+        $(".priceStatusLabel").text("Below $ goal")
+        console.log("below");
+    }else if(price == goalPrice){
+        $(".priceStatusLabel").attr("class", "label label-success priceStatusLabel")
+        $(".priceStatusLabel").text("At $ goal")
+        console.log("at");
+
+    }else{
+        $(".priceStatusLabel").attr("class", "label label-important priceStatusLabel")
+        $(".priceStatusLabel").text("Above $ goal")
+        console.log("above");
+
+    }
+     
 }
