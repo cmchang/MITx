@@ -4,16 +4,12 @@
     <title>Sushi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <link href="my-bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="my-bootstrap/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href = "sushiPlate.css" rel = "stylesheet">
-    <script src = "sushiPlate.js"></script>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
-    <!-- This script tag makes the lists grided and sortable-->
+    <link href = "sushiPlate.css" rel = "stylesheet">
     
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src = "sushiPlate.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     
 </head>
 
@@ -30,61 +26,94 @@
     
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="span12">
-Filler text! Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. 
-        
+        <div class="hero-unit">
+            <h1>Help me, please!</h1> 
+            <p>I'm so hungry but I only have <b>$30</b> and I'm craving sushi!  Help me choose the best combination of sushi so that I can get the most out of my money and become as full as possible!  You can test out different combinations of sushi below by dragging items from the menu onto my plate.  You'll be able to see the current total price and whether I can afford the chosen meal on the right hand side.  Thanks in advance for your help!
+            </p>
+    
+            <p><a href="#sushiPlate" class="btn btn-primary btn-large">Let's begin!</a></p>
+
         </div>
-        
+        <ul class ="thumbnails">
+            <li class="span3">
+                <a class ="thumbnail"><img src="images/thumbnail1.jpg" ></a>
+            </li>
+            <li class="span3">
+                <a class ="thumbnail"><img src="images/thumbnail2.jpg" ></a>
+            </li>
+            <li class="span3">
+                <a class ="thumbnail"><img src="images/thumbnail3.jpg" ></a>
+            </li>
+            <li class="span3">
+                <a class ="thumbnail"><img src="images/thumbnail4.jpeg" ></a>
+            </li>
+            
+        </ul>
     </div>
     
     
-    <div class="row-fluid sushiPlate">
-        <div class = "row-fluid">
-            <div class = "span5">
-                <h3>Sushi Menu</h3>
-            </div>
-            <div class = "span5">
-                <h3>Your Current Plate</h3>
-            
-            </div>
-            <div class = "span2"></div>
-        </div>
-        <div class = "row-fluid">
-            <div class="span5">
-                <ul id="sortable1" class="connectedSortable itemContainer1">
-                    <li><text>$10, 15%</text><img src="images/sushi1.jpg" data-price = "10" data-hunger = "15"></li>
-                    <li><text>$8, 8%</text><img src="images/sushi2.png" data-price = "8" data-hunger = "8"></li>
-                    <li><text>$6, 4%</text><img src="images/sushi3.png" data-price = "6" data-hunger = "4"></li>
-                    <li><text>$8, 8%</text><img src="images/sushi4.png" data-price = "8" data-hunger = "8"></li>
-                    <li><text>$8, 4%</text><img src="images/sushi5.png" data-price = "8" data-hunger = "4"></li>
-                    <li><text>$10, 15%</text><img src="images/sushi6.jpg" data-price = "10" data-hunger = "10"></li>
-                    <li><text>$10, 15%</text><img src="images/sushi1.jpg" data-price = "10" data-hunger = "15"></li>
-                    <li><text>$8, 8%</text><img src="images/sushi2.png" data-price = "8" data-hunger = "8"></li>
-                    <li><text>$6, 4%</text><img src="images/sushi3.png" data-price = "6" data-hunger = "4"></li>
-
-                </ul>
-            </div>
-            <div class="span5">
-                <ul id="sortable1" class="connectedSortable itemContainer2">
-                </ul>
+    <div class="row-fluid sushiPlate" id = "sushiPlate">
+        <div class = "backgroundDiv">
+            <div class = "row-fluid">
+                <div class = "span5">
+                    <h3>Sushi Menu</h3>
                 </div>
-            <div class ="span2">
-                <div class = "row-fluid statusBar">
-                    <div ><h4><u>Current Status:</u></h4></div>
-                    <div ><h5>Price:  <span class = "price">$0</span></h5></div>
-                    <div><span class="label label-success priceStatusLabel">Below $ goal</span></div>
-                    <div ><h5>Fullness:  <span class = "hunger">0%</span></h5></div>
-                    <div class="progress progress-striped">
-                        <div class="bar" style="width: 0%;"></div>
+                <div class = "span5">
+                    <h3>My Current Plate</h3>
+                
+                </div>
+                <div class = "span2"></div>
+            </div>
+            <div class = "row-fluid">
+                <div class="span5">
+                    <ul id="sortable1" class="connectedSortable itemContainer1">
+                        <li><text>$10, 22%</text><img src="images/sushi1.jpg" data-price = "10" data-hunger = "22"></li>
+                        <li><text>$8, 8%</text><img src="images/sushi2.png" data-price = "8" data-hunger = "8"></li>
+                        <li><text>$6, 4%</text><img src="images/sushi3.png" data-price = "6" data-hunger = "4"></li>
+                        <li><text>$8, 6%</text><img src="images/sushi4.png" data-price = "8" data-hunger = "6"></li>
+                        <li><text>$8, 4%</text><img src="images/sushi5.png" data-price = "8" data-hunger = "4"></li>
+                        <li><text>$10, 22%</text><img src="images/sushi6.jpg" data-price = "10" data-hunger = "22"></li>
+                        <li><text>$8, 8%</text><img src="images/sushi7.jpg" data-price = "8" data-hunger = "8"></li>
+                        <li><text>$6, 4%</text><img src="images/sushi8.png" data-price = "6" data-hunger = "4"></li>
+                        <li><text>$10, 22%</text><img src="images/sushi1.jpg" data-price = "10" data-hunger = "22"></li>
+                        <li><text>$8, 8%</text><img src="images/sushi2.png" data-price = "8" data-hunger = "8"></li>
+                        <li><text>$6, 4%</text><img src="images/sushi3.png" data-price = "6" data-hunger = "4"></li>
+                        <li><text>$8, 6%</text><img src="images/sushi4.png" data-price = "8" data-hunger = "6"></li>
+                    </ul>
+                </div>
+                <div class="span5">
+                    <ul id="sortable1" class="connectedSortable itemContainer2">
+                    </ul>
                     </div>
-
-                    
+                <div class ="span2">
+                    <div class = "row-fluid statusBar">
+                        <div ><h4><u>Current Status:</u></h4></div>
+                        <div ><h5>Price:  <span class = "price">$0/$30</span></h5></div>
+                        <div><span class="label label-success priceStatusLabel">Affordable</span></div>
+                        <div ><h5>Fullness:  <span class = "hunger">0%</span></h5></div>
+                        <div class="progress progress-striped">
+                            <div class="bar" style="width: 0%;"></div>
+                        </div>
+                        <a id="elem" class="btn btn-primary btn-small" rel="popover" data-original-title="I'm still hungry! You didn't choose anything for me to eat yet :(" data-placement = "left">Feed me!</a>
+                        <script>
+                            $(function(){
+                             $("#elem").popover(); 
+                            });
+                        </script>
+                        
+                    </div>
                 </div>
             </div>
         </div>
     </div> <!-- End of Knapsack Div -->
 </div>
     
+        <link href="my-bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
+        <link href="my-bootstrap/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+        <script src="my-bootstrap/docs/assets/js/bootstrap-tooltip.js"></script>
+        <script src="my-bootstrap/docs/assets/js/bootstrap-popover.js"></script>
+    
+
 </body>
 </html>
     

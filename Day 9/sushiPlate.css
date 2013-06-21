@@ -10,8 +10,9 @@ body {
 
 .itemContainer1, .itemContainer2{
     border: solid gray 1px;
+    background-color: white;
     border-radius: 15px;
-    height: 360px;
+    height: 500px;
     width: 450px;
 }
 #sortable1{ 
