@@ -53,7 +53,7 @@
     
     
     <div class="row-fluid sushiPlate" id = "sushiPlate">
-        <div class = "backgroundDiv">
+        <div class = "backgroundDiv" style = 'background-image: url("images/background.jpg");'>
             <div class = "row-fluid">
                 <div class = "span5">
                     <h3>Sushi Menu</h3>
@@ -94,7 +94,11 @@
                         <div class="progress progress-striped">
                             <div class="bar" style="width: 0%;"></div>
                         </div>
-                        <a id="elem" class="btn btn-primary btn-small" rel="popover" data-original-title="I'm still hungry! You didn't choose anything for me to eat yet :(" data-placement = "left">Feed me!</a>
+                        <a id="elem" class="btn btn-primary btn-default" rel="popover" data-original-title="I'm still hungry! You didn't choose anything for me to eat yet :(" data-placement = "left">Feed me for feedback!</a>
+                        
+                        <!-- CelebrationHolder in progress..... -->
+                        <div class = "celebrationHolder" style = "opacity: .8;"></div>
+                        
                         <script>
                             $(function(){
                              $("#elem").popover(); 

@@ -14,8 +14,10 @@ body {
     border-radius: 15px;
     height: 500px;
     width: 450px;
+    opacity: .8;
+
 }
-#sortable1{ 
+#sortable1{
     list-style-type: none; 
     margin: 0; 
     padding: 0 0 2.5em; 
@@ -35,4 +37,10 @@ body {
 
 .statusBar{
     text-align:left;
+}
+
+.backgroundDiv{
+    margin-top: 45px;
+    padding: 20px;  
+    border-radius: 15px;
 }
