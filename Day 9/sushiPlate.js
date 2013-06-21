@@ -83,12 +83,12 @@ function DONEbuttonUpdate(){
         if(totalPrice == goalPrice){   
             $(".btn").attr("data-original-title", "YOU WIN!");
             $(".btn").attr("data-content", "WOW! Thank you!  I'm not hungry and you used my money up exactly!");
-            $(".celebrationHolder").html('<img src="images/celebration.jpg" class="img-rounded">');
+            $(".celebrationHolder").html('<img src="images/celebration.jpg" style = "padding-top: 15px" class="img-rounded">');
 
         }else if(totalPrice < goalPrice){
             $(".btn").attr("data-original-title", "YOU WIN!");
             $(".btn").attr("data-content", "Wow! Thank you! I'm not hungry and you managed to save me some of my money! ");
-            $(".celebrationHolder").html('<img src="images/celebration.jpg" class="img-rounded">');
+            $(".celebrationHolder").html('<img src="images/celebration.jpg" style = "padding-top: 15px" class="img-rounded">');
 
         }else{
             $(".btn").attr("data-content", "...but I don't have the money to afford it all :( Help me and try again please?");
